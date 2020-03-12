@@ -9,7 +9,7 @@ class InvestmentPortfolio:
     return self.__buying_power
 
   def buyOption(self, stock_option, individual_price, quantity):
-    total_price = individual_price * float(quantity)
+    total_price = individual_price * float(quantity) * 100
     if(total_price > self.__buying_power):
       return False
     else:
@@ -18,6 +18,7 @@ class InvestmentPortfolio:
         self.__options[stock_option] = int(quantity) + int(current_quantity)
       else:
         self.__options[stock_option] = int(quantity)
+      self.__buying_power -= total_price
       return True
 
   def printOptions(self):

@@ -61,6 +61,9 @@ while running:
   elif(userInput == "-p"):
     MyPortfolio.printOptions()
 
+  elif(userInput == "-buying power"):
+    print(MyPortfolio.getBuyingPower())
+
   elif(userInput == "-q"):
     running = False
 
