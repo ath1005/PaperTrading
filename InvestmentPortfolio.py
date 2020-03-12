@@ -8,4 +8,5 @@ class InvestmentPortfolio:
   def getBuyingPower(self):
     return self.__buying_power
 
-  
+  def buyOption(stock_option, individual_price, quantity):
+    total_price = 
