@@ -3,6 +3,7 @@ import datetime
 import time
 from StockOption import StockOption
 from InvestmentPortfolio import InvestmentPortfolio
+from StockOption import getOptionPrice
 
 robin_stocks.authentication.login(username="hassonatlee@yahoo.com", password="ChiefAt033100", by_sms=True, store_session=True)
 
@@ -17,9 +18,6 @@ def printHelp():
   print("-buy option: Purchase option contract(s)")
   print("-buying power: Print the current buying power in the Investment Portfolio")
   print("-q: Quit the program")
-
-def getOptionPrice(stock_ticker, expiration_date, strike_price, option_type):
-  return float((robin_stocks.options.get_option_market_data(option_ticker, expiration_date, strike_price, option_type, 'adjusted_mark_price')))
 
 running = True
 while running:
@@ -57,13 +55,16 @@ while running:
       print(option)
     else:
       print("Transaction unsuccessful: You do not have enough buying power to purchase the requested number of option contracts")
-      print(f"Buying power: {MyPortfolio.getBuyingPower()}")
+      print(f"Buying power: ${MyPortfolio.getBuyingPower()}")
 
   elif(userInput == "-p"):
     MyPortfolio.printOptions()
 
   elif(userInput == "-buying power"):
-    print(MyPortfolio.getBuyingPower())
+    print(f"${MyPortfolio.getBuyingPower()}")
+
+  elif(userInput == "-portfolio value"):
+    print(f"Portfolio value: ${MyPortfolio.getPortfolioValue()}")
 
   elif(userInput == "-q"):
     running = False

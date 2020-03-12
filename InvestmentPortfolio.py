@@ -1,3 +1,5 @@
+from StockOption import getOptionPrice
+
 class InvestmentPortfolio:
   __buying_power = None;
   __options = {};
@@ -24,3 +26,9 @@ class InvestmentPortfolio:
   def printOptions(self):
     for key, value in self.__options.items():
       print ("\nOption: "+ str(key) + "\nQuantity: " + str(value))
+
+  def getPortfolioValue(self):
+    total = 0.0
+    for key, value in self.__options.items():
+      total += getOptionPrice(getattr(key, 'stock_ticker'), getattr(key, 'expiration_date'), getattr(key, 'strike_price'), getattr(key, 'option_type')) * 100.0
+    return total + self.__buying_power
