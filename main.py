@@ -50,7 +50,16 @@ while running:
     option_type = input("Option type: ")
     quantity = input("Number of contracts: ")
     option_price = getOptionPrice(option_ticker, expiration_date, strike_price, option_type)
-    stock_option = StockOption(option_ticker, expiration_date, strike_price, option_type)
+    option = StockOption(option_ticker, expiration_date, strike_price, option_type)
+    if(MyPortfolio.buyOption(option, option_price, quantity)):
+      print("Transaction successful!")
+      print(option)
+    else:
+      print("Transaction unsuccessful: You do not have enough buying power to purchase the requested number of option contracts")
+      print(f"Buying power: {MyPortfolio.getBuyingPower()}")
+
+  elif(userInput == "-p"):
+    MyPortfolio.printOptions()
 
   elif(userInput == "-q"):
     running = False
