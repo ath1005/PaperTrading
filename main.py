@@ -11,11 +11,12 @@ initial_investment_capital = float(input("How much money would you like to start
 MyPortfolio = InvestmentPortfolio(initial_investment_capital)
 
 def printHelp():
-  print("-h: print list of commands")
-  print("-ticker name: print the name of the company associated with the given stock ticker")
-  print("-option price")
-  print("-buy option")
-  print("-q: quit the program")
+  print("-h: Print list of commands")
+  print("-ticker name: Print the name of the company associated with the given stock ticker")
+  print("-option price: Get the current price of 1 option contract with the given information")
+  print("-buy option: Purchase option contract(s)")
+  print("-buying power: Print the current buying power in the Investment Portfolio")
+  print("-q: Quit the program")
 
 def getOptionPrice(stock_ticker, expiration_date, strike_price, option_type):
   return float((robin_stocks.options.get_option_market_data(option_ticker, expiration_date, strike_price, option_type, 'adjusted_mark_price')))
