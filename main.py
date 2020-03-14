@@ -56,7 +56,7 @@ else:
             print("Transaction successful!")
           else:
             print("Transaction unsuccessful: \nYou do not have enough buying power to purchase the requested number of option contracts")
-            print(f"Buying power: ${MyPortfolio.getBuyingPower()}")
+            print(f"Buying power: ${MyPortfolio.getBuyingPower():.4f}")
 
     elif(userInput == "-sell option"):
       option_ticker = input("Stock ticker: ")
@@ -79,10 +79,10 @@ else:
       MyPortfolio.printOptions()
 
     elif(userInput == "-buying power"):
-      print(f"${MyPortfolio.getBuyingPower()}")
+      print(f"${MyPortfolio.getBuyingPower():.4f}")
 
     elif(userInput == "-portfolio value"):
-      print(f"Portfolio value: ${MyPortfolio.getPortfolioValue()}")
+      print(f"Portfolio value: ${MyPortfolio.getPortfolioValue():.4f}")
 
     elif(userInput == "-q"):
       robin_stocks.authentication.logout()
