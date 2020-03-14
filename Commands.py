@@ -9,6 +9,7 @@ def printHelp():
     print("-q: Quit the program")
 
 def getStockTicker(ticker):
+  print(robin_stocks.stocks.get_name_by_symbol(ticker))
   return robin_stocks.stocks.get_name_by_symbol(ticker)
 
 def getOptionPrice(stock_ticker, expiration_date, strike_price, option_type):
