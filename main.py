@@ -24,7 +24,7 @@ else:
     elif(userInput == "-ticker name"):
       ticker = input("Enter stock ticker: ")
       stock_name = getStockTicker(ticker)
-      if(stock_name == None):
+      if(stock_name == ""):
         print("Invalid stock ticker!")
       else:
         print(stock_name)
@@ -34,7 +34,7 @@ else:
       expiration_date = input("Expiration date: ")
       strike_price = input("Strike price: ")
       option_type = input("Option type:")
-      if(getStockTicker(option_ticker) == None):
+      if(getStockTicker(option_ticker) == ""):
         print("Invalid stock ticker!")
       else:
         option_price = getOptionPrice(option_ticker, expiration_date, strike_price, option_type)
@@ -46,7 +46,7 @@ else:
       strike_price = input("Strike price: ")
       option_type = input("Option type: ")
       quantity = input("Number of contracts: ")
-      if(getStockTicker(option_ticker) == None):
+      if(getStockTicker(option_ticker) == ""):
         print("Invalid stock ticker!")
       else:
         option_price = getOptionPrice(option_ticker, expiration_date, strike_price, option_type)
@@ -64,7 +64,7 @@ else:
       strike_price = input("Strike price: ")
       option_type = input("Option type: ")
       quantity = input("Number of contracts: ")
-      if(getStockTicker(option_ticker) == None):
+      if(getStockTicker(option_ticker) == ""):
         print("Invalid stock ticker!")
       else:
         option = StockOption(option_ticker, expiration_date, strike_price, option_type)
