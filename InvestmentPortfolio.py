@@ -41,6 +41,6 @@ class InvestmentPortfolio:
 
   def getPortfolioValue(self):
     total = 0.0
-    for key, value in self.__options.items():
+    for key, value in self.options.items():
       total += getOptionPrice(getattr(key, 'stock_ticker'), getattr(key, 'expiration_date'), getattr(key, 'strike_price'), getattr(key, 'option_type')) * 100.0
-    return total + self.__buying_power
+    return total + self.buying_power

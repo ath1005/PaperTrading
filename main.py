@@ -9,7 +9,7 @@ from StockOption import getOptionPrice
 username = input("Enter your Robinhood username: ")
 password = getpass.getpass("Enter your Robinhood password: ")
 
-robin_stocks.authentication.login(username, password, by_sms=True, store_session=True)
+#robin_stocks.authentication.login(username, password, by_sms=True, store_session=True)
 
 initial_investment_capital = float(input("How much money would you like to start with? "))
 
@@ -40,7 +40,7 @@ while running:
 
   elif(userInput == "-option price"):
     option_ticker = input("Stock ticker: ")
-    expiration_date = input("Expiration date (YYYY-MM-DD): ")
+    expiration_date = input("Expiration date: ")
     strike_price = input("Strike price: ")
     option_type = input("Option type:")
     option_price = getOptionPrice(option_ticker, expiration_date, strike_price, option_type)
@@ -57,7 +57,7 @@ while running:
     if(MyPortfolio.buyOption(option, option_price, quantity)):
       print("Transaction successful!")
     else:
-      print("Transaction unsuccessful: You do not have enough buying power to purchase the requested number of option contracts")
+      print("Transaction unsuccessful: \nYou do not have enough buying power to purchase the requested number of option contracts")
       print(f"Buying power: ${MyPortfolio.getBuyingPower()}")
 
   elif(userInput == "-sell option"):
@@ -71,7 +71,7 @@ while running:
     if(MyPortfolio.sellOption(option, option_price, quantity)):
       print("Transaction successful!")
     else:
-      print(f"Transaction unsuccessful: You do not have own enough contracts of: {option}")
+      print(f"Transaction unsuccessful: \nYou do not have own enough contracts of: {option}")
 
 
   elif(userInput == "-p"):
