@@ -2,7 +2,7 @@ from Commands import getOptionPrice
 
 class InvestmentPortfolio:
   """
-  A call used to represent the user's assets
+  A class used to represent the user's assets
 
   Attributes
   ----------
