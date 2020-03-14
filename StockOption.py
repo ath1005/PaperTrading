@@ -1,12 +1,5 @@
 import robin_stocks
 
-def getOptionPrice(stock_ticker, expiration_date, strike_price, option_type):
-  price = robin_stocks.options.get_option_market_data(stock_ticker, expiration_date, strike_price, option_type, 'adjusted_mark_price')
-  if price != None:
-    return float(price)
-  else:
-    return False
-
 class StockOption:
   strike_price = 0.0
   stock_ticker = ""

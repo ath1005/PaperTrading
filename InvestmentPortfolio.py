@@ -1,4 +1,4 @@
-from StockOption import getOptionPrice
+from Commands import getOptionPrice
 
 class InvestmentPortfolio:
   buying_power = None;

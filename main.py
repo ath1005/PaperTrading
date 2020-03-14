@@ -3,7 +3,7 @@ import datetime
 import time
 from StockOption import StockOption
 from InvestmentPortfolio import InvestmentPortfolio
-from StockOption import getOptionPrice
+from Commands import printHelp, getStockTicker, getOptionPrice
 
 try:
   robin_stocks.authentication.login()
@@ -14,14 +14,6 @@ else:
 
   MyPortfolio = InvestmentPortfolio(initial_investment_capital)
 
-  def printHelp():
-    print("-h: Print list of commands")
-    print("-ticker name: Print the name of the company associated with the given stock ticker")
-    print("-option price: Get the current price of 1 option contract with the given information")
-    print("-buy option: Purchase option contract(s)")
-    print("-buying power: Print the current buying power in the Investment Portfolio")
-    print("-q: Quit the program")
-
   running = True
   while running:
     userInput = input("Please enter a command, or type -h for help: ")
@@ -31,7 +23,7 @@ else:
 
     elif(userInput == "-ticker name"):
       ticker = input("Enter stock ticker: ")
-      stock_name = robin_stocks.stocks.get_name_by_symbol(ticker)
+      stock_name = getStockTicker(ticker)
       if(stock_name == ""):
         print("Invalid stock ticker!")
       else:
