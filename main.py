@@ -1,11 +1,15 @@
 import robin_stocks
 import datetime
 import time
+import getpass
 from StockOption import StockOption
 from InvestmentPortfolio import InvestmentPortfolio
 from StockOption import getOptionPrice
 
-robin_stocks.authentication.login(username="hassonatlee@yahoo.com", password="ChiefAt033100", by_sms=True, store_session=True)
+username = input("Enter your Robinhood username: ")
+password = getpass.getpass("Enter your Robinhood password: ")
+
+robin_stocks.authentication.login(username, password, by_sms=True, store_session=True)
 
 initial_investment_capital = float(input("How much money would you like to start with? "))
 
@@ -52,10 +56,23 @@ while running:
     option = StockOption(option_ticker, expiration_date, strike_price, option_type)
     if(MyPortfolio.buyOption(option, option_price, quantity)):
       print("Transaction successful!")
-      print(option)
     else:
       print("Transaction unsuccessful: You do not have enough buying power to purchase the requested number of option contracts")
       print(f"Buying power: ${MyPortfolio.getBuyingPower()}")
+
+  elif(userInput == "-sell option"):
+    option_ticker = input("Stock ticker: ")
+    expiration_date = input("Expiration date: ")
+    strike_price = input("Strike price: ")
+    option_type = input("Option type: ")
+    quantity = input("Number of contracts: ")
+    option = StockOption(option_ticker, expiration_date, strike_price, option_type)
+    option_price = getOptionPrice(option_ticker, expiration_date, strike_price, option_type)
+    if(MyPortfolio.sellOption(option, option_price, quantity)):
+      print("Transaction successful!")
+    else:
+      print(f"Transaction unsuccessful: You do not have own enough contracts of: {option}")
+
 
   elif(userInput == "-p"):
     MyPortfolio.printOptions()
@@ -68,5 +85,3 @@ while running:
 
   elif(userInput == "-q"):
     running = False
-
-    
