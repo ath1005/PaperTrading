@@ -87,3 +87,6 @@ else:
     elif(userInput == "-q"):
       robin_stocks.authentication.logout()
       running = False
+
+    else:
+      print("Invalid command; enter -h for help")
