@@ -33,7 +33,7 @@ else:
       option_ticker = input("Stock ticker: ")
       expiration_date = input("Expiration date: ")
       strike_price = input("Strike price: ")
-      option_type = input("Option type:")
+      option_type = input("Option type: ")
       if(getStockTicker(option_ticker) == ""):
         print("Invalid stock ticker!")
       else:
