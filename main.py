@@ -24,7 +24,7 @@ else:
     elif(userInput == "-ticker name"):
       ticker = input("Enter stock ticker: ")
       stock_name = getStockTicker(ticker)
-      if(stock_name == ""):
+      if(stock_name == None):
         print("Invalid stock ticker!")
       else:
         print(stock_name)
@@ -34,8 +34,11 @@ else:
       expiration_date = input("Expiration date: ")
       strike_price = input("Strike price: ")
       option_type = input("Option type:")
-      option_price = getOptionPrice(option_ticker, expiration_date, strike_price, option_type)
-      print(f"${round(option_price * 100)}")
+      if(getStockTicker(option_ticker) == None):
+        print("Invalid stock ticker!")
+      else:
+        option_price = getOptionPrice(option_ticker, expiration_date, strike_price, option_type)
+        print(f"${round(option_price * 100)}")
 
     elif(userInput == "-buy option"):
       option_ticker = input("Stock ticker: ")
@@ -43,14 +46,17 @@ else:
       strike_price = input("Strike price: ")
       option_type = input("Option type: ")
       quantity = input("Number of contracts: ")
-      option_price = getOptionPrice(option_ticker, expiration_date, strike_price, option_type)
-      if(option_price):
-        option = StockOption(option_ticker, expiration_date, strike_price, option_type)
-        if(MyPortfolio.buyOption(option, option_price, quantity)):
-          print("Transaction successful!")
-        else:
-          print("Transaction unsuccessful: \nYou do not have enough buying power to purchase the requested number of option contracts")
-          print(f"Buying power: ${MyPortfolio.getBuyingPower()}")
+      if(getStockTicker(option_ticker) == None):
+        print("Invalid stock ticker!")
+      else:
+        option_price = getOptionPrice(option_ticker, expiration_date, strike_price, option_type)
+        if(option_price):
+          option = StockOption(option_ticker, expiration_date, strike_price, option_type)
+          if(MyPortfolio.buyOption(option, option_price, quantity)):
+            print("Transaction successful!")
+          else:
+            print("Transaction unsuccessful: \nYou do not have enough buying power to purchase the requested number of option contracts")
+            print(f"Buying power: ${MyPortfolio.getBuyingPower()}")
 
     elif(userInput == "-sell option"):
       option_ticker = input("Stock ticker: ")
@@ -58,12 +64,15 @@ else:
       strike_price = input("Strike price: ")
       option_type = input("Option type: ")
       quantity = input("Number of contracts: ")
-      option = StockOption(option_ticker, expiration_date, strike_price, option_type)
-      option_price = getOptionPrice(option_ticker, expiration_date, strike_price, option_type)
-      if(MyPortfolio.sellOption(option, option_price, quantity)):
-        print("Transaction successful!")
+      if(getStockTicker(option_ticker) == None):
+        print("Invalid stock ticker!")
       else:
-        print(f"Transaction unsuccessful: \nYou do not have own enough contracts of: {option}")
+        option = StockOption(option_ticker, expiration_date, strike_price, option_type)
+        option_price = getOptionPrice(option_ticker, expiration_date, strike_price, option_type)
+        if(MyPortfolio.sellOption(option, option_price, quantity)):
+          print("Transaction successful!")
+        else:
+          print(f"Transaction unsuccessful: \nYou do not have own enough contracts of: {option}")
 
 
     elif(userInput == "-p"):
