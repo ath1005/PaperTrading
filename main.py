@@ -1,7 +1,6 @@
 import robin_stocks
 import datetime
 import time
-import getpass
 from StockOption import StockOption
 from InvestmentPortfolio import InvestmentPortfolio
 from StockOption import getOptionPrice
@@ -53,12 +52,13 @@ else:
       option_type = input("Option type: ")
       quantity = input("Number of contracts: ")
       option_price = getOptionPrice(option_ticker, expiration_date, strike_price, option_type)
-      option = StockOption(option_ticker, expiration_date, strike_price, option_type)
-      if(MyPortfolio.buyOption(option, option_price, quantity)):
-        print("Transaction successful!")
-      else:
-        print("Transaction unsuccessful: \nYou do not have enough buying power to purchase the requested number of option contracts")
-        print(f"Buying power: ${MyPortfolio.getBuyingPower()}")
+      if(option_price):
+        option = StockOption(option_ticker, expiration_date, strike_price, option_type)
+        if(MyPortfolio.buyOption(option, option_price, quantity)):
+          print("Transaction successful!")
+        else:
+          print("Transaction unsuccessful: \nYou do not have enough buying power to purchase the requested number of option contracts")
+          print(f"Buying power: ${MyPortfolio.getBuyingPower()}")
 
     elif(userInput == "-sell option"):
       option_ticker = input("Stock ticker: ")
