@@ -24,6 +24,10 @@ class InvestmentPortfolio:
     self.buying_power = starting_capital
     self.options = {}
 
+  def __init__(self, capital, options):
+    self.buying_power = capital
+    self.options = options
+
   def getBuyingPower(self):
     """
     Returns
