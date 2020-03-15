@@ -86,8 +86,8 @@ else:
     elif(userInput == "-q"):
       robin_stocks.authentication.logout()
       f = open("out.txt","w+")
-      f.write(str(MyPortfolio.buying_power))
-      f.write(MyPortfolio.getOptions)
+      f.write(str(MyPortfolio.getBuyingPower()))
+      f.write(MyPortfolio.getOptions())
       f.close()
       running = False
 
