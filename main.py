@@ -87,7 +87,7 @@ else:
       robin_stocks.authentication.logout()
       f = open("out.txt","w+")
       f.write(str(MyPortfolio.getBuyingPower()))
-      f.write(MyPortfolio.getOptions())
+      f.write(str(MyPortfolio.getOptions()))
       f.close()
       running = False
 
