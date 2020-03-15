@@ -14,7 +14,7 @@ class InvestmentPortfolio:
   buying_power : float;
   options : {};
 
-  def __init__(self, starting_capital):
+  def __init__(self, starting_capital, options = {}):
     """
     Parameters
     ----------
@@ -22,10 +22,6 @@ class InvestmentPortfolio:
       the user's starting capital
     """
     self.buying_power = starting_capital
-    self.options = {}
-
-  def __init__(self, capital, options):
-    self.buying_power = capital
     self.options = options
 
   def getBuyingPower(self):

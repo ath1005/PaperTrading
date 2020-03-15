@@ -1,6 +1,8 @@
 import robin_stocks
 import datetime
 import time
+import os.path
+from os import path
 from StockOption import StockOption
 from InvestmentPortfolio import InvestmentPortfolio
 from Commands import printHelp, getStockName, getOptionPrice
@@ -10,11 +12,12 @@ try:
 except:
   print("Invalid login!")
 else:
-  f = open("out.txt", "r")
-  if f.mode == "r":
-    capital = float(f.readline())
-    options = dict(f.readline())
-    MyPortfolio = InvestmentPortfolio(capital, options)
+  if path.exists("out.txt"):
+    f = open("out.txt", "r")
+    if f.mode == "r":
+      capital = float(f.readline())
+      options = dict(f.readline())
+      MyPortfolio = InvestmentPortfolio(capital, options)
   else:
     initial_investment_capital = float(input("How much money would you like to start with? "))
     MyPortfolio = InvestmentPortfolio(initial_investment_capital)
