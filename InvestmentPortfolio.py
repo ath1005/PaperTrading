@@ -33,6 +33,17 @@ class InvestmentPortfolio:
     """
     return self.buying_power
 
+  def getOptions(self):
+    """
+    Gets the dictionary of options in the portfolio
+    
+    Returns
+    -------
+    dict
+      all options in the portfolio
+    """
+    return self.options
+
   def buyOption(self, stock_option, individual_price, quantity):
     """Attempts to purchase options contract(s)
     Parameters

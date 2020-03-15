@@ -11,7 +11,6 @@ except:
   print("Invalid login!")
 else:
   initial_investment_capital = float(input("How much money would you like to start with? "))
-
   MyPortfolio = InvestmentPortfolio(initial_investment_capital)
 
   running = True
@@ -86,6 +85,10 @@ else:
 
     elif(userInput == "-q"):
       robin_stocks.authentication.logout()
+      f = open("out.txt","w+")
+      f.write(str(MyPortfolio.buying_power))
+      f.write(MyPortfolio.getOptions)
+      f.close()
       running = False
 
     else:
