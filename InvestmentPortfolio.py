@@ -60,7 +60,7 @@ class InvestmentPortfolio:
     bool
       True if purchase was successful, False otherwise
     """
-    total_price = individual_price * quantity * 100
+    total_price = individual_price * float(quantity) * 100
     if(total_price > self.buying_power):
       return False
     else:
