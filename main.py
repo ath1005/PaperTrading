@@ -1,7 +1,6 @@
 import robin_stocks
 import datetime
 import time
-import os.path
 from os import path
 from StockOption import StockOption
 from InvestmentPortfolio import InvestmentPortfolio
@@ -16,7 +15,12 @@ else:
     f = open("out.txt", "r")
     if f.mode == "r":
       capital = float(f.readline())
-      options = dict(f.readline())
+      options = {}
+      for x in f.readlines():
+        ticker, exp_date, strike_price, type, quantity = x.split(", ")
+        stock_option = StockOption(ticker, exp_date, strike_price, type)
+        options[stock_option] = int(quantity)
+
       MyPortfolio = InvestmentPortfolio(capital, options)
   else:
     initial_investment_capital = float(input("How much money would you like to start with? "))
@@ -96,7 +100,7 @@ else:
       robin_stocks.authentication.logout()
       f = open("out.txt","w+")
       f.write(str(MyPortfolio.getBuyingPower()) + '\n')
-      f.write(str(MyPortfolio.getOptions()))
+      f.write(MyPortfolio.optionsToString())
       f.close()
       running = False
 

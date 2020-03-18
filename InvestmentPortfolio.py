@@ -120,3 +120,9 @@ class InvestmentPortfolio:
     for key, value in self.options.items():
       total += getOptionPrice(getattr(key, 'stock_ticker'), getattr(key, 'expiration_date'), getattr(key, 'strike_price'), getattr(key, 'option_type')) * 100.0
     return total + self.buying_power
+
+  def optionsToString(self):
+    dictStr = ""
+    for key, value in self.options:
+      dictStr += (getattr(key, 'stock_ticker') + ", " + getattr(key, 'expiration_date') + ", " + str(getattr(key, 'strike_price')) + ", " + getattr(key, 'option_type') + ", " + str(value) + '\n')
+    return dictStr
