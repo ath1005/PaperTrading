@@ -123,6 +123,6 @@ class InvestmentPortfolio:
 
   def optionsToString(self):
     dictStr = ""
-    for key, value in self.options:
+    for key, value in self.options.items():
       dictStr += (getattr(key, 'stock_ticker') + ", " + getattr(key, 'expiration_date') + ", " + str(getattr(key, 'strike_price')) + ", " + getattr(key, 'option_type') + ", " + str(value) + '\n')
     return dictStr
