@@ -89,6 +89,7 @@ else:
 
     elif(userInput == "-p"):
       print(f"Portfolio value: ${MyPortfolio.getPortfolioValue():.4f}")
+      print(f"Buying power: ${MyPortfolio.buying_power():.4f}")
       MyPortfolio.printOptions()
 
     elif(userInput == "-buying power"):
