@@ -24,7 +24,7 @@ else:
       MyPortfolio = InvestmentPortfolio(capital, options)
   else:
     initial_investment_capital = float(input("How much money would you like to start with? "))
-    MyPortfolio = InvestmentPortfolio(initial_investment_capital)
+    MyPortfolio = InvestmentPortfolio(initial_investment_capital, {})
 
   running = True
   while running:

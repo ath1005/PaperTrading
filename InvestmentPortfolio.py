@@ -14,7 +14,7 @@ class InvestmentPortfolio:
   buying_power : float;
   options : {};
 
-  def __init__(self, starting_capital, options = {}):
+  def __init__(self, starting_capital, options):
     """
     Parameters
     ----------
