@@ -105,7 +105,7 @@ class InvestmentPortfolio:
     """
 
     for key, value in self.options.items():
-      print ("\nOption: "+ str(key) + "\nQuantity: " + str(value))
+      print (str(key) + "\nQuantity: " + str(value) + "\n")
 
   def getPortfolioValue(self):
     """Gets the value of the user's portfolio
